@@ -10,10 +10,10 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <Layout>
       <Head>
-        <title>Events Line</title>
+        <title>Blogger</title>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Find a lot of great events that allow you to be aware of events" />
+        <meta name="description" content="You will find many great posts on Blogger" />
       </Head>
       <Component {...pageProps} />
     </Layout>

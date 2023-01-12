@@ -1,41 +1,55 @@
-import { useEffect } from 'react';
-import type { GetStaticProps, NextPage } from 'next';
+import type { NextPage } from 'next';
 
-import EventList from '@/src/components/event-list';
-import FormNewsletter from '@/src/modules/comments/FormNewsletter/FormNewsletter';
-import { getFeaturedEvents } from '@/src/services/events';
-import { Event } from '@/src/types/event';
+import FeaturedPosts from '../modules/home/FeaturedPosts/FeaturedPosts';
+import Hero from '../modules/home/Hero/Hero';
+import { Post } from '../types';
 
-import useTypedDispatch from '../hooks/useTypedDispatch';
-import { loadProfileRequest } from '../store/features/user';
+const mockPosts: Array<Post> = [
+  {
+    id: 'getting-started-with-nextjs',
+    title: 'Getting Started with NextJS',
+    description: `Next.js is a flexible React framework that gives you building blocks to create fast web applications.
 
-interface HomePageProps {
-  events: Array<Event>;
-}
+    But what exactly do we mean by this? Let’s spend some time expanding on what React and Next.js are and how they can help.`,
+    image: 'getting-started-nextjs.png',
+    createAt: '2022-02-10',
+  },
+  {
+    id: 'getting-started-with-nextjs2',
+    title: 'Getting Started with NextJS',
+    description: `Next.js is a flexible React framework that gives you building blocks to create fast web applications.
 
-const HomePage: NextPage<HomePageProps> = ({ events }) => {
-  const dispatch = useTypedDispatch();
+    But what exactly do we mean by this? Let’s spend some time expanding on what React and Next.js are and how they can help.`,
+    image: 'getting-started-nextjs.png',
+    createAt: '2022-02-10',
+  },
+  {
+    id: 'getting-started-with-nextjs3',
+    title: 'Getting Started with NextJS',
+    description: `Next.js is a flexible React framework that gives you building blocks to create fast web applications.
 
-  useEffect(() => {
-    dispatch(loadProfileRequest());
-  }, [dispatch]);
+    But what exactly do we mean by this? Let’s spend some time expanding on what React and Next.js are and how they can help.`,
+    image: 'getting-started-nextjs.png',
+    createAt: '2022-02-10',
+  },
+  {
+    id: 'getting-started-with-nextjs4',
+    title: 'Getting Started with NextJS',
+    description: `Next.js is a flexible React framework that gives you building blocks to create fast web applications.
 
+    But what exactly do we mean by this? Let’s spend some time expanding on what React and Next.js are and how they can help.`,
+    image: 'getting-started-nextjs.png',
+    createAt: '2022-02-10',
+  },
+];
+
+const HomePage: NextPage = () => {
   return (
     <>
-      <FormNewsletter />
-      <EventList items={events} />
+      <Hero />
+      <FeaturedPosts posts={mockPosts} />
     </>
   );
-};
-
-export const getStaticProps: GetStaticProps = async () => {
-  const { data, error } = await getFeaturedEvents();
-
-  if (error || !data) {
-    return { props: { events: [] }, revalidate: 1 };
-  }
-
-  return { props: { events: data }, revalidate: 1800 };
 };
 
 export default HomePage;

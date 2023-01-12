@@ -1,7 +1,8 @@
 const routes = {
   home: '/',
-  events: '/events',
-  chat: '/chat',
+  posts: '/posts',
+  post: '/posts/[postId]',
+  contact: '/contact',
 };
 
 export default routes;

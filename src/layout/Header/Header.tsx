@@ -3,22 +3,23 @@ import Link from 'next/link';
 
 import { routes } from '@/src/constants';
 
+import { navigation } from './Header.data';
+
 import styles from './Header.module.scss';
 
 const Header: FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <Link href={routes.home}>NextEvents</Link>
+        <Link href={routes.home}>Blogger</Link>
       </div>
       <nav className={styles.navigation}>
         <ul className={styles.list}>
-          <li className={styles.item}>
-            <Link href={routes.chat}>Chat</Link>
-          </li>
-          <li className={styles.item}>
-            <Link href={routes.events}>All Events</Link>
-          </li>
+          {navigation.map(({ name, link }) => (
+            <li className={styles.item}>
+              <Link href={link}>{name}</Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>
