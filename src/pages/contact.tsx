@@ -1,7 +1,9 @@
 import type { NextPage } from 'next';
 
-const ContactPage: NextPage = () => {
-  return <div>Contact page</div>;
+import ContactPage from '../modules/contact/ContactPage';
+
+const Contact: NextPage = () => {
+  return <ContactPage />;
 };
 
-export default ContactPage;
+export default Contact;

@@ -1,5 +1,3 @@
-const base = {
-  PROJECT_NAME: 'event-line',
+export const base = {
+  PROJECT_NAME: 'blogger',
 };
-
-export default base;

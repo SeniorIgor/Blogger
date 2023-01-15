@@ -16,7 +16,7 @@ const Header: FC = () => {
       <nav className={styles.navigation}>
         <ul className={styles.list}>
           {navigation.map(({ name, link }) => (
-            <li className={styles.item}>
+            <li className={styles.item} key={name}>
               <Link href={link}>{name}</Link>
             </li>
           ))}

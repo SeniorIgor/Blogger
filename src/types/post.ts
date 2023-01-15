@@ -3,5 +3,7 @@ export interface Post {
   title: string;
   image: string;
   createAt: string;
+  content: string;
   description: string;
+  isFeatured?: boolean;
 }
