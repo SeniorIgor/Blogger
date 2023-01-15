@@ -1,4 +1,5 @@
 import { FC, useCallback } from 'react';
+import ReactDOM from 'react-dom';
 
 import useTypedDispatch from '@/src/hooks/useTypedDispatch';
 import { resetNotification } from '@/src/store/features/notification';
@@ -14,7 +15,7 @@ const Notification: FC<NotificationProps> = ({ title, message, status }) => {
     dispatch(resetNotification());
   }, [dispatch]);
 
-  return (
+  return ReactDOM.createPortal(
     <div
       className={cn(styles.notification, {
         [styles.success]: status === 'success',
@@ -26,7 +27,8 @@ const Notification: FC<NotificationProps> = ({ title, message, status }) => {
     >
       <h2>{title}</h2>
       <p>{message}</p>
-    </div>
+    </div>,
+    document.getElementById('notifications')!,
   );
 };
 

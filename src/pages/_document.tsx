@@ -7,9 +7,9 @@ class Document extends NextDocument {
       <Html lang="en">
         <Head />
         <body>
-          <div id="overlays" />
           <Main />
           <NextScript />
+          <div id="notifications" />
         </body>
       </Html>
     );

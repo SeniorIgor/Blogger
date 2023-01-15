@@ -1,4 +1,5 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
 import { ParsedUrlQuery } from 'querystring';
 
 import { getAllPostsFiles, getPost } from '@/src/lib';
@@ -14,7 +15,15 @@ interface PostsProps {
 }
 
 const Post: NextPage<PostsProps> = ({ post }) => {
-  return <PostPage post={post} />;
+  return (
+    <>
+      <Head>
+        <title>{post.title}</title>
+        <meta name="description" content={post.description} />
+      </Head>
+      <PostPage post={post} />;
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps<PostsProps, Params> = ({ params }) => {

@@ -1,4 +1,5 @@
 import type { GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
 
 import { getFeaturedPosts } from '../lib';
 import HomePage from '../modules/home/HomePage';
@@ -9,7 +10,15 @@ interface HomeProps {
 }
 
 const Home: NextPage<HomeProps> = ({ posts }) => {
-  return <HomePage posts={posts} />;
+  return (
+    <>
+      <Head>
+        <title>Igor&apos; Blog</title>
+        <meta name="description" content="I post about web development." />
+      </Head>
+      <HomePage posts={posts} />;
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps<HomeProps> = () => {
