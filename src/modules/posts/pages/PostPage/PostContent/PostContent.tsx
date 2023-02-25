@@ -1,7 +1,9 @@
 import { FC, memo, useMemo } from 'react';
 import ReactMarkdown, { Options } from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
+import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
+import atomDark from 'react-syntax-highlighter/dist/cjs/styles/prism/atom-dark';
 import Image from 'next/image';
 
 import { Post } from '@/src/types';
@@ -11,6 +13,9 @@ import PostHeader from '../PostHeader/PostHeader';
 import { PostContentProps } from './PostContent.types';
 
 import styles from './PostContent.module.scss';
+
+SyntaxHighlighter.registerLanguage('js', js);
+SyntaxHighlighter.registerLanguage('css', css);
 
 const getMarkdownComponents = ({ id }: Post): Options['components'] => ({
   // img: ({ src, alt }) => <Image src={`/images/posts/${id}/${src}`} alt={alt} width={600} height={300} />,

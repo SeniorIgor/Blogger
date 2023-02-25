@@ -1,10 +1,12 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { ParsedUrlQuery } from 'querystring';
 
 import { getAllPostsFiles, getPost } from '@/src/lib';
-import PostPage from '@/src/modules/posts/pages/PostPage/PostPage';
 import { Post } from '@/src/types';
+
+const PostPage = dynamic(() => import('@/src/modules/posts/pages/PostPage/PostPage'));
 
 interface Params extends ParsedUrlQuery {
   postId: string;

@@ -16,9 +16,6 @@ const nextConfig = {
 
     return config;
   },
-  env: {
-    BASE_URL: process.env.BASE_URL,
-  },
   images: {
     domains: ['picsum.photos', 'social-network.samuraijs.com'],
   },
